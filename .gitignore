@@ -1,0 +1,4 @@
+# Git Ignore for this project
+**/*.log
+**/*.bak
+**/*.bkup
