@@ -13,3 +13,18 @@ any issues found.
 
 ## Requirements
 Installation and config of ClamAV - [ClamAV](https://www.clamav.net/)
+
+## Options
+You can run the virus-scan.sh with the following options
+
+**-l**
+
+This will create the virus-scan.log file in the same location where it's running.
+Running it with out the option will create the log file under /var/log/virus-scan
+
+## Usage
+./virus-scan.sh
+
+With the option -l
+
+/virus-scan.sh -l
