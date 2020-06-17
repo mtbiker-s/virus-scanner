@@ -4,7 +4,14 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
+                //sh 'python --version'
+		sh label: 'runVirusScan', script: '''dirToScan="/home/carlo/Downloads"
+		echo "Attempting to run ClamAV against "$dirToScan
+
+		cd $dirToScan
+		pwd
+
+		virus-scan'''
             }
         }
     }
