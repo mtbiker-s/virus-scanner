@@ -14,5 +14,10 @@ pipeline {
 		virus-scan'''
             }
         }
+	stage('notification'){
+		steps {
+		mail bcc: '', body: 'Virus Scan ran against ubuntu Downloads folder', cc: '', from: 'carloesanchez@gmail.com', replyTo: '', subject: 'Virus Scan Completed', to: 'carloesanchez@gmail.com'
+		}
+	}
     }
 }
