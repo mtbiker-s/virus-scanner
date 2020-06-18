@@ -4,6 +4,7 @@ pipeline {
         toEmail = 'carloesanchez@gmail.com'
         fromEmail = 'jenkins@ubuntu-local.edu'
         backupLocation = '/home/carlo/Downloads'
+        hostName = 'ubi'
     }
 
     stages {
@@ -22,7 +23,7 @@ pipeline {
         stage('notification'){
             steps {
                 mail bcc: '',
-                body: 'Virus Scan ran against ${backupLocation}',
+                body: 'Virus Scan ran against '"${backupLocation}"' on '"${hostName}",
                 cc: '',
                 from: "${fromEmail}",
                 replyTo: '',
