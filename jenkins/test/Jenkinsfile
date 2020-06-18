@@ -10,7 +10,7 @@ pipeline {
         stage('build') {
             steps {
                     sh label: 'runVirusScan',
-                    script: '''dirToScan="'''${backupLocation}'''"
+                    script: '''dirToScan="'''"${backupLocation}"'''"
                     echo "Attempting to run ClamAV against "$dirToScan
 
                     cd $dirToScan
@@ -24,10 +24,10 @@ pipeline {
                 mail bcc: '',
                 body: 'Virus Scan ran against ubuntu Downloads folder',
                 cc: '',
-                from: ${fromEmail},
+                from: "${fromEmail}",
                 replyTo: '',
                 subject: 'Virus Scan Completed',
-                to: ${toEmail}
+                to: "${toEmail}"
             }
         }
     }
