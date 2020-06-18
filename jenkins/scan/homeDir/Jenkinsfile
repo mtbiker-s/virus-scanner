@@ -1,21 +1,35 @@
 pipeline {
     agent any
+    environment {
+        toEmail = 'carloesanchez@gmail.com'
+        fromEmail = 'jenkins@ubuntu-local.edu'
+        backupLocation = '/home/carlo'
+        hostName = 'ubi'
+    }
+
     stages {
         stage('build') {
             steps {
-		sh label: 'runVirusScan', script: '''dirToScan="/home/carlo"
-		echo "Attempting to run ClamAV against "$dirToScan
+                    sh script: '''dirToScan=${backupLocation}
+                    echo "Attempting to run ClamAV against "$dirToScan
 
-		cd $dirToScan
-		pwd
+                    cd $dirToScan
+                    pwd
 
-		virus-scan'''
+                    virus-scan''',
+                    label: 'runVirusScan'
+                }
+        }
+        stage('notification'){
+            steps {
+                mail bcc: '',
+                body: "Virus Scan ran against ${backupLocation} on ${hostName}",
+                cc: '',
+                from: "${fromEmail}",
+                replyTo: '',
+                subject: 'Virus Scan Completed',
+                to: "${toEmail}"
             }
         }
-	stage('notification'){
-		steps {
-		mail bcc: '', body: 'Virus Scan ran against ubuntu home folder', cc: '', from: 'carloesanchez@gmail.com', replyTo: '', subject: 'Virus Scan Completed', to: 'carloesanchez@gmail.com'
-		}
-	}
     }
 }

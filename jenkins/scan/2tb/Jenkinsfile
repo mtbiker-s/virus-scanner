@@ -3,7 +3,7 @@ pipeline {
     environment {
         toEmail = 'carloesanchez@gmail.com'
         fromEmail = 'jenkins@ubuntu-local.edu'
-        backupLocation = '/home/carlo'
+        backupLocation = '/media/2tb'
         hostName = 'ubi'
     }
 
