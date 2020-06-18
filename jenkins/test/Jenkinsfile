@@ -24,7 +24,7 @@ pipeline {
                 mail bcc: '',
                 body: 'Virus Scan ran against ubuntu Downloads folder',
                 cc: '',
-                from: ${fromEmail}
+                from: ${fromEmail},
                 replyTo: '',
                 subject: 'Virus Scan Completed',
                 to: ${toEmail}
