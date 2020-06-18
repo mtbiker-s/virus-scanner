@@ -22,7 +22,7 @@ pipeline {
         stage('notification'){
             steps {
                 mail bcc: '',
-                body: 'Virus Scan ran against ubuntu Downloads folder',
+                body: 'Virus Scan ran against ${backupLocation}',
                 cc: '',
                 from: "${fromEmail}",
                 replyTo: '',
