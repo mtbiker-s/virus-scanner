@@ -9,15 +9,14 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                    sh, 
-                    label: 'runVirusScan',
-                    script: '''dirToScan="'''"${backupLocation}"'''"
+                    sh script: '''dirToScan="'''"${backupLocation}"'''"
                     echo "Attempting to run ClamAV against "$dirToScan
 
                     cd $dirToScan
                     pwd
 
-                    virus-scan'''
+                    virus-scan''',
+                    label: 'runVirusScan'
                 }
         }
         stage('notification'){
