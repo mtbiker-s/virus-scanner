@@ -16,7 +16,7 @@ pipeline {
                     cd $dirToScan
                     pwd
 
-                    virus-scan''',
+                    virus-scan'''
                 }
         }
         stage('notification'){
@@ -27,7 +27,7 @@ pipeline {
                 from: ${fromEmail}
                 replyTo: '',
                 subject: 'Virus Scan Completed',
-                to: ${toEmail},
+                to: ${toEmail}
             }
         }
     }
