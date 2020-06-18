@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                    sh script: '''dirToScan="'''"${backupLocation}"'''"
+                    sh script: '''dirToScan=${backupLocation}
                     echo "Attempting to run ClamAV against "$dirToScan
 
                     cd $dirToScan
