@@ -4,7 +4,7 @@ pipeline {
         toEmail = 'carloesanchez@gmail.com'
         fromEmail = 'jenkins@rpi-local.edu'
         backupLocation = '/home/pi/Downloads'
-        hostName = 'ubi'
+        hostName = 'rpi'
     }
 
     stages {
