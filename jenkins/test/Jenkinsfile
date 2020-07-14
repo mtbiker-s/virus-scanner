@@ -2,24 +2,22 @@ pipeline {
     agent any
     environment {
         toEmail = 'carloesanchez@gmail.com'
-        fromEmail = 'jenkins@rpi-local.edu'
-        backupLocation = '/home/pi'
-        hostName = 'rpi'
+        fromEmail = 'jenkins@ubuntu-local.edu'
+        backupLocation = '/home/carlo/Downloads'
+        hostName = 'ubi'
     }
 
     stages {
         stage('build') {
             steps {
-                    withCredentials([usernamePassword(credentialsId: 'jenkins_on_rpi', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh script: '''dirToScan=${backupLocation}
                     echo "Attempting to run ClamAV against "$dirToScan
 
                     cd $dirToScan
                     pwd
 
-                    echo $PASSWORD | sudo -S virus-scan''',
+                    virus-scan''',
                     label: 'runVirusScan'
-                    }
                 }
         }
         stage('notification'){
