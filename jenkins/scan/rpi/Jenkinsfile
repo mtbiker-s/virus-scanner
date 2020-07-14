@@ -24,13 +24,10 @@ pipeline {
         }
         stage('notification'){
             steps {
-                mail bcc: '',
-                body: "Virus Scan ran against ${backupLocation} on ${hostName}",
-                cc: '',
-                from: "${fromEmail}",
-                replyTo: '',
-                subject: 'Virus Scan Completed',
-                to: "${toEmail}"
+                    emailext attachLog: true, 
+                    body: "Virus Scan ran against ${backupLocation} on ${hostName}", 
+                    subject: 'Virus Scan Completed', 
+                    to: "${toEmail}"
             }
         }
     }
