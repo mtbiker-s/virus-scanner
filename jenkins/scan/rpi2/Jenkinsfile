@@ -25,7 +25,7 @@ pipeline {
         stage('notification'){
             steps {
                     emailext attachLog: true,
-                    body: "Virus Scan ran against ${backupLocation} on ${hostName} /n
+                    body: "Virus Scan ran against ${backupLocation} on ${hostName} \n
                     More info at ${env.BUILD_URL}", 
                     subject: 'Virus Scan Completed', 
                     to: "${toEmail}"
