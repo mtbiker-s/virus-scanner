@@ -3,7 +3,7 @@ pipeline {
     environment {
         toEmail = 'carloesanchez@gmail.com'
         fromEmail = 'jenkins@rpi2-local.edu'
-        backupLocation = '/home/pi'
+        backupLocation = '/home/pi/Downloads'
         hostName = 'rpi2'
     }
 
@@ -24,8 +24,8 @@ pipeline {
         }
         stage('notification'){
             steps {
-                    emailext attachLog: true, 
-                    body: "Virus Scan ran against ${backupLocation} on ${hostName}", 
+                    emailext attachLog: body: "Virus Scan ran against ${backupLocation} on ${hostName}
+                    More info at ${env.BUILD_URL}", 
                     subject: 'Virus Scan Completed', 
                     to: "${toEmail}"
             }
